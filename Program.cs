@@ -1,27 +1,40 @@
+using Microsoft.EntityFrameworkCore;
+using ProjetoMVC.Context;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+        // Add services to the container.
+      // builder.Services.AddDbContext<AgendaContext>(options =>
+      // options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+      builder.Services.AddDbContext<AgendaContext>(options => 
+      options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
-var app = builder.Build();
+    
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+        builder.Services.AddControllersWithViews();
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+        var app = builder.Build();
 
-app.UseRouting();
+        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
 
-app.UseAuthorization();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+        app.UseRouting();
 
-app.Run();
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.Run();
+    

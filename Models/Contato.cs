@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjetosMVC.Models
+namespace ProjetoMVC.Models
 {
     public class Contato
     {
