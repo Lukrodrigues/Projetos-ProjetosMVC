@@ -11,18 +11,17 @@ using ProjetoMVC.Context;
 namespace ProjetoMVC.Migrations
 {
     [DbContext(typeof(AgendaContext))]
-    [Migration("20221109013637_AdicionaTabelaContato")]
+    [Migration("20221125013231_AdicionaTabelaContato")]
     partial class AdicionaTabelaContato
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("ProjetoMVC.Models.Contato", b =>
                 {
@@ -30,7 +29,7 @@ namespace ProjetoMVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");

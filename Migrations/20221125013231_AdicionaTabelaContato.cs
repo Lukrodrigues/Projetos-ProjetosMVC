@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ProjetosMVC.Migrations
+namespace ProjetoMVC.Migrations
 {
     public partial class AdicionaTabelaContato : Migration
     {
